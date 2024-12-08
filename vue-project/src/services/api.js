@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const API_URL = "https://jouw-api-url.com"; // Pas dit aan naar jouw backend-URL
+const API_URL = "http://localhost:3000/api";
 
-export const login = async (email, password) => {
+export const login = async (username, password) => {
   const response = await axios.post(`${API_URL}/login`, {
-    email,
+    username,
     password,
   });
-  return response.data; // Verwacht een token terug
+  return response.data; // Ontvangt een token als antwoord
 };
+

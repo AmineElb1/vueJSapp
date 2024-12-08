@@ -25,10 +25,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("token");
   if (to.meta.requiresAuth && !token) {
-    next("/"); // Stuur naar de loginpagina als er geen token is
+    next("/"); // Redirect naar login als er geen token is
   } else {
     next();
   }
 });
+
 
 export default router;
