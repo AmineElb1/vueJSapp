@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <h1 class="login-title">Login</h1>
+    <h1>Login</h1>
     <form @submit.prevent="handleLogin" class="login-form">
       <input
         v-model="username"
@@ -36,9 +36,12 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const data = await login(this.username, this.password);
-        localStorage.setItem("token", data.token);
-        this.$router.push("/home");
+        const response = await login(this.username, this.password);
+        // Sla de JWT-token op in localStorage
+        localStorage.setItem("token", response.token);
+
+        // Navigeer naar de OrderList
+        this.$router.push("/orders");
       } catch (error) {
         this.errorMessage = error.response?.data?.message || "Login failed";
       }
@@ -46,7 +49,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 /* Container for the login page */
 .login-container {
@@ -125,5 +127,4 @@ export default {
     padding: 20px;
   }
 }
-
 </style>

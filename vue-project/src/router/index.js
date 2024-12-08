@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "../components/LoginView.vue";
-import HomeView from "../views/HomeView.vue";
+import OrderList from "../components/OrderList.vue";
 
 const routes = [
   {
@@ -9,10 +9,10 @@ const routes = [
     component: LoginView,
   },
   {
-    path: "/home",
-    name: "Home",
-    component: HomeView,
-    meta: { requiresAuth: true },
+    path: "/orders",
+    name: "Orders",
+    component: OrderList,
+    meta: { requiresAuth: true }, // Vereist een geldige token
   },
 ];
 
@@ -30,6 +30,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
 
 export default router;
