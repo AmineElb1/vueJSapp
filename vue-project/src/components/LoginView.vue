@@ -49,6 +49,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 /* Container for the login page */
 .login-container {
